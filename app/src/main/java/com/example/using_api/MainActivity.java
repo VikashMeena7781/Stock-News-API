@@ -1,180 +1,6 @@
-//package com.example.using_api;
-//
-//import androidx.appcompat.app.AppCompatActivity;
-//import androidx.recyclerview.widget.RecyclerView;
-//
-//import android.os.Build;
-//import android.os.Bundle;
-//import android.util.Log;
-//import android.view.View;
-//import android.widget.Button;
-//import android.widget.Toast;
-//
-//import com.example.using_api.Adapter.NewsAdapter;
-//import com.example.using_api.Model.News;
-//
-//import org.json.JSONArray;
-//import org.json.JSONException;
-//import org.json.JSONObject;
-//
-//import java.io.IOException;
-//import java.io.InputStreamReader;
-//import java.net.HttpURLConnection;
-//import java.net.URL;
-//import java.util.ArrayList;
-//import java.util.Collections;
-//import java.util.List;
-//import java.util.concurrent.CompletableFuture;
-//
-//public class MainActivity extends AppCompatActivity {
-//    RecyclerView recyclerView;
-//
-//    Button getnews;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-//
-//        recyclerView = findViewById(R.id.recycler_view);
-//        getnews=findViewById(R.id.news);
-//
-//        getnews.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                CompletableFuture<String> futureResult = null;
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-//                    futureResult = CompletableFuture.supplyAsync(() -> {
-//                        try {
-//                            Log.d("msg","Hello");
-//                            return callFinanceAPI("https://mboum-finance.p.rapidapi.com/ne/news/?symbol=AAPL%2CMSFT");
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                            return null;
-//                        }
-//                    });
-//                }
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-////                    futureResult.thenAcceptAsync(this::onResponse);
-//                    futureResult.thenAcceptAsync(result -> {
-//                        try {
-//                            JSONObject resultJson = new JSONObject(result);
-//                            List<News> newsList = new ArrayList<>();
-//                            JSONArray jsonArray = resultJson.getJSONArray("item");
-//                            for (int i = 0; i < jsonArray.length(); i++) {
-//                                News news = new News();
-//                                news.setTitle(jsonArray.getJSONObject(i).getString("title"));
-//                                news.setDescription(jsonArray.getJSONObject(i).getString("description"));
-//                                news.setPublish_date(jsonArray.getJSONObject(i).getString("pubDate"));
-//                                newsList.add(news);
-//                            }
-//                            NewsAdapter newsAdapter = new NewsAdapter(newsList,getApplicationContext());
-//                            recyclerView.setAdapter(newsAdapter);
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                            Toast.makeText(getApplicationContext(), "Oops!! something went wrong, please try again", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//
-//                }
-//
-//
-//            }
-//
-//
-//        });
-//
-////        recyclerView.
-//    }
-//
-//    private String callFinanceAPI(String apiUrl) throws Exception {
-//        URL url = new URL(apiUrl);
-////        Log.d("msg","Hii");
-//        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-//        // set headers for the request
-//        // set host name
-//        connection.setRequestProperty("X-RapidAPI-Host", "mboum-finance.p.rapidapi.com");
-//
-//        // set the rapid-api key
-////        Log.d("msg","Hii_2");
-//        connection.setRequestProperty("X-RapidAPI-Key", "18c935d513msh8cff4fe15c38f82p17f7aejsnef2a8a9efb44");
-//        connection.setRequestProperty("content-type", "application/x-www-form-urlencoded");
-//        // set the request method - POST
-//        connection.setRequestMethod("POST");
-//        Log.d("msg","Hello_3");
-//        Log.d("msg", String.valueOf(connection.getInputStream()));
-//        InputStreamReader inputStreamReader = new InputStreamReader(connection.getInputStream());
-//        Log.d("msg","Hii_5");
-//
-//
-//
-//        // read the response data
-//        int data = inputStreamReader.read();
-//        Log.d("msg","Hii_4");
-//        StringBuilder result = new StringBuilder();
-//        while (data != -1) {
-//            char current = (char) data;
-//            result.append(current);
-//            data = inputStreamReader.read();
-//        }
-//        Log.d("msg",result.toString());
-//        return result.toString();
-//    }
-//
-//    private void onResponse(String result) {
-//        try {
-//            // convert the string to JSON object for better reading
-//            JSONObject resultJson = new JSONObject(result);
-//
-//            // Initialize prediction text
-////            String prediction = "Today's prediction \n";
-////            prediction += this.sunSign + "\n";
-//            List<News> newsList = new ArrayList<>();
-//
-//            JSONArray jsonArray = resultJson.getJSONArray("item");
-//
-//            for (int i = 0; i < jsonArray.length(); i++) {
-//                News news = new News();
-//                news.setTitle(jsonArray.getJSONObject(i).getString("title"));
-//                news.setDescription(jsonArray.getJSONObject(i).getString("description"));
-//                news.setPublish_date(jsonArray.getJSONObject(i).getString("pubDate"));
-//                newsList.add(news);
-//
-//            }
-//
-//            NewsAdapter newsAdapter = new NewsAdapter(newsList,getApplicationContext());
-//            recyclerView.setAdapter(newsAdapter);
-//
-////            News news = new News();
-////            news.setTitle(resultJson.getString("title"));
-////            news.setDescription(resultJson.getString("description"));
-////            news.setPublish_date(resultJson.getString("pubDate"));
-//
-//
-//
-//            // Update text with various fields from response
-////            prediction += resultJson.getString("current_date") + "\n\n";
-////            prediction += resultJson.getString("description");
-//
-//
-//            // Update the prediction to the view
-////            setText(this.resultView, prediction);
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-////            this.resultView.setText("Oops!! something went wrong, please try again");
-//            Toast.makeText(this, "Oops!! something went wrong, please try again", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-//
-//
-//
-//}
-
-
 package com.example.using_api;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -186,7 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.using_api.Adapter.MainNewsAdapter;
 import com.example.using_api.Adapter.NewsAdapter;
+import com.example.using_api.Model.MainNews;
 import com.example.using_api.Model.News;
 
 import org.json.JSONArray;
@@ -209,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
 
     NewsAdapter newsAdapter;
+    MainNewsAdapter mainNewsAdapter;
 
     Button getnews;
+    Button getMainNews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -220,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getnews=findViewById(R.id.news);
+        getMainNews=findViewById(R.id.mainNews);
 
         getnews.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -273,6 +104,62 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
 
+        });
+
+        getMainNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OkHttpClient client = new OkHttpClient();
+
+                Request request = new Request.Builder()
+                        .url("https://mboum-finance.p.rapidapi.com/ne/news")
+                        .get()
+                        .addHeader("X-RapidAPI-Key", "b8457a3c19msh6b8f44d876294c3p1e11dbjsnb5f81e2e8e41")
+                        .addHeader("X-RapidAPI-Host", "mboum-finance.p.rapidapi.com")
+                        .build();
+
+               client.newCall(request).enqueue(new Callback() {
+                   @Override
+                   public void onFailure(Call call, IOException e) {
+                       e.printStackTrace();
+                   }
+
+                   @Override
+                   public void onResponse(Call call,Response response) throws IOException {
+                       if (!response.isSuccessful()) {
+                           throw new IOException("Unexpected code " + response);
+                       }
+                       String responseString = response.body().string();
+
+                       runOnUiThread(new Runnable() {
+                           @Override
+                           public void run() {
+                               try{
+                                   JSONArray resultJson = new JSONArray(responseString);
+                                   List<MainNews> mainNewsList = new ArrayList<>();
+                                  // JSONArray jsonArray = resultJson.getJSONArray("item");
+                                   for (int i = 0; i < resultJson.length(); i++){
+                                       MainNews mainNews = new MainNews();
+                                       mainNews.setTitle(resultJson.getJSONObject(i).getString("title"));
+                                       mainNews.setLink(resultJson.getJSONObject(i).getString("link"));
+                                       mainNews.setPubDate(resultJson.getJSONObject(i).getString("pubDate"));
+                                       mainNews.setSource(resultJson.getJSONObject(i).getString("source"));
+                                       mainNews.setGuid(resultJson.getJSONObject(i).getString("guid"));
+                                       mainNewsList.add(mainNews);
+
+                                   }
+                                   mainNewsAdapter = new MainNewsAdapter(mainNewsList, MainActivity.this);
+                                   recyclerView.setAdapter(mainNewsAdapter);
+                                   Log.d("msg", String.valueOf(mainNewsList.size()));
+                               } catch (JSONException e) {
+                                   e.printStackTrace();
+                                   Toast.makeText(getApplicationContext(), "Oops!! something went wrong, please try again", Toast.LENGTH_SHORT).show();
+                               }
+                           }
+                       });
+                   }
+               });
+            }
         });
 
     }

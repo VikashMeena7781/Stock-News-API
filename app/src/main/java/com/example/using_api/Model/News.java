@@ -29,13 +29,7 @@ public class News {
         this.description = description;
     }
 
-//    public String getLink() {
-//        return link;
-//    }
 
-//    public void setLink(String link) {
-//        this.link = link;
-//    }
 
     public String getPublish_date() {
         return publish_date;
